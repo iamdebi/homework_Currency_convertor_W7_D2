@@ -6,8 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Currency Convertor</title>
     <script src="js/bundle.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <h1>Currency Exhance Rates</h1>
+            <!-- <input type="text" v-model="selectedCurrency"> -->
+
+          <label for="currency_select">Select a Currencies:</label>
+          <select id="currency_select" v-model="selectedCurrency">
+            <option disabled value="">Select A Currency</option>
+            <option v-for="(exchange, currency) in rates" :value=currency>{{currency}}</option>
+          </select>
+
+        <div class="currency" v-for="currency in filterCurrencies">
+            <div>
+                <h3>EUR to Name: {{ currency.key }}</h3>
+                <p>Rate: {{currency.value}}</p>
+            </div>
+            <div>
+                <h3>{{currency.key}} to EUR</h3>
+                <p>Rate: {{1/currency.value}}</p>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
